@@ -9,17 +9,23 @@ import {
 
 import List from "../components/List";
 import SearchBar from "../components/SearchBar";
+// import Data from "../assets/dataProducts.json"
+
+// const data = Data;
+// console.log(formatData);
 
 const Home = () => {
   const [searchPhrase, setSearchPhrase] = useState("");
   const [clicked, setClicked] = useState(false);
   const [fakeData, setFakeData] = useState();
 
-  // get data from the fake api
+  // get data from the fake api 
   useEffect(() => {
+    // setFakeData(formatData);
     const getData = async () => {
       const apiResponse = await fetch(
-        "https://gist.githubusercontent.com/gllmt/fa64545b3ae379aff24ebfa7c98b6734/raw/e3b67f45b35e3a7b24063480157599b72a8b40a8/testapiproductslanguages.json"
+        // "https://gist.githubusercontent.com/gllmt/fa64545b3ae379aff24ebfa7c98b6734/raw/e3b67f45b35e3a7b24063480157599b72a8b40a8/testapiproductslanguages.json"
+        "https://gist.githubusercontent.com/gllmt/1fe5ff04b63822dfd71e076b759c0685/raw/d543f58c864584804504dce7238a96a1cefddc92/fakedataproducts.json"
       );
       const data = await apiResponse.json();
       setFakeData(data);
