@@ -1,7 +1,6 @@
 import React from "react";
 import { StyleSheet, TextInput, View, Keyboard, Button, Image } from "react-native";
 
-
 const SearchBar = (props) => {
   return (
     <View style={styles.container}>
@@ -85,12 +84,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginLeft: 10,
     width: "90%",
-  },
-  // ImageStyle: {
-  //   height: 25,
-  //   width: 25,
-  //   resizeMode: 'stretch',
-  //   alignItems: 'center',
-  //   fill:"red"
-  // }
+  }
 });

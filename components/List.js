@@ -33,11 +33,10 @@ const List = (props) => {
           props.setClicked(false);
         }}
       >
-        {/* fix keyExtractor return warning ? */}
         <FlatList
           data={props.data.data.allProductReference}
           renderItem={renderItem}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item, index) => {return index.toString()}}
         />
       </View>
     </SafeAreaView>
