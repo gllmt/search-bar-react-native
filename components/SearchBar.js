@@ -11,16 +11,6 @@ const SearchBar = (props) => {
             : styles.searchBar__clicked
         }
       >
-        {/* <Feather
-          name="search"
-          size={20}
-          color="black"
-          style={{ marginLeft: 1 }}
-        /> */}
-        {/* <Image
-        source={require('../assets/images/ios-search.svg')}
-        style={styles.ImageStyle}
-        /> */}
         <TextInput
           style={styles.input}
           placeholder="Recherche"
@@ -30,12 +20,6 @@ const SearchBar = (props) => {
             props.setClicked(true);
           }}
         />
-        
-        {/* {props.clicked && (
-          <Entypo name="cross" size={20} color="black" style={{ padding: 1 }} onPress={() => {
-            props.setSearchPhrase("")
-          }}/>
-        )} */}
       </View>
       {props.clicked && (
         <View>
