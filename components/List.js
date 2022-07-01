@@ -14,14 +14,37 @@ const Item = ({ name }) => (
   </View>
 );
 
+const excludeTerms = ["DE","DU","DES","L","D","LA","LE","LES","ET","A","AU","AUX","EN"];
+
+const extractTerms = (name) => {
+  return name.toUpperCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/(\w{2,})(S)/, "$1")
+            .split(/\W+/)
+            .filter(term => !!term && !excludeTerms.includes(term)); 
+            // si chaine vide !! return false et pas inclus dans la list
+}
+
+const matchTerms = ({ searchPhrase }, { display_name }) => {
+  const itemTerms = extractTerms(display_name);
+  
+  return extractTerms(searchPhrase).every((term) => {
+    return itemTerms.find(itemTerm => itemTerm.indexOf(term) === 0);
+  });
+}
 // the filter
 const List = (props) => {
   const renderItem = ({ item }) => {
-    // when no input, show all
+    // when no input, show all items
     if (props.searchPhrase === "") {
       return <Item name={item.display_name} />;
     }
-    if (item.display_name.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(props.searchPhrase.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
+    // if (item.display_name.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(props.searchPhrase.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
+    //   return <Item name={item.display_name} />;
+    // }
+    const itemTerms = extractTerms(item.display_name);
+    if (matchTerms(props, item)) {
       return <Item name={item.display_name} />;
     }
   };
