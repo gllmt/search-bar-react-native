@@ -7,6 +7,11 @@ import {
   SafeAreaView,
 } from "react-native";
 
+// todo
+  // - ajouter un debounce dans la searchBar ?
+  // - garder itemTerms en cache 
+
+
 // definition of the Item, which will be rendered in the FlatList
 const Item = ({ name }) => (
   <View style={styles.item}>
