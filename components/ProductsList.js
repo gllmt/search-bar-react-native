@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  SafeAreaView,
-} from "react-native";
+import { StyleSheet, Text, View, FlatList, SafeAreaView } from "react-native";
 
 const Item = ({ name }) => (
   <View style={styles.item}>
