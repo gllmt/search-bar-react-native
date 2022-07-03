@@ -15,7 +15,7 @@ const SearchBar = (props) => {
           style={styles.input}
           placeholder="Recherche"
           value={props.searchWord}
-          onChangeText={props.setsearchWord}
+          onChangeText={props.setSearchWord}
           onFocus={() => {
             props.setClicked(true);
           }}
@@ -28,6 +28,7 @@ const SearchBar = (props) => {
             onPress={() => {
               Keyboard.dismiss();
               props.setClicked(false);
+              props.setSearchWord("");
             }}
           ></Button>
         </View>

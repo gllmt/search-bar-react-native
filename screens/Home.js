@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  SafeAreaView,
-  ActivityIndicator,
-} from "react-native";
+import { StyleSheet, Text, SafeAreaView, ActivityIndicator } from "react-native";
 
 import ProductsList from "../components/ProductsList";
 import SearchBar from "../components/SearchBar";
@@ -12,23 +7,14 @@ import DataProducts from "../assets/dataProducts.json"
 
 
 const Home = () => {
-  const [searchWord, setsearchWord] = useState("");
+  const [searchWord, setSearchWord] = useState("");
   const [clicked, setClicked] = useState(false);
   const [fakeData, setFakeData] = useState();
   const data = DataProducts;
+
   // get data from File DataProducts
   useEffect(() => {
-    // console.log(data);
     setFakeData(data);
-    // const getData = async () => {
-    //   const apiResponse = await fetch(
-    //     // "https://gist.githubusercontent.com/gllmt/fa64545b3ae379aff24ebfa7c98b6734/raw/e3b67f45b35e3a7b24063480157599b72a8b40a8/testapiproductslanguages.json"
-    //     "https://gist.githubusercontent.com/gllmt/1fe5ff04b63822dfd71e076b759c0685/raw/d543f58c864584804504dce7238a96a1cefddc92/fakedataproducts.json"
-    //   );
-    //   const data = await apiResponse.json();
-    //   setFakeData(data);
-    // };
-    // getData();
   }, []);
 
   return (
@@ -37,7 +23,7 @@ const Home = () => {
 
       <SearchBar
         searchWord={searchWord}
-        setsearchWord={setsearchWord}
+        setSearchWord={setSearchWord}
         clicked={clicked}
         setClicked={setClicked}
       />
@@ -63,8 +49,8 @@ const styles = StyleSheet.create({
   },
   title: {
     width: "100%",
-    marginTop: 20,
-    fontSize: 25,
+    marginTop: 50,
+    fontSize: 30,
     fontWeight: "bold",
     marginLeft: "10%",
   },
