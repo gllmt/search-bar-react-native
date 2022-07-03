@@ -7,8 +7,6 @@ import {
   SafeAreaView,
 } from "react-native";
 
-
-// The Item, which will be rendered in the FlatList
 const Item = ({ name }) => (
   <View style={styles.item}>
     <Text style={styles.title}>{name}</Text>
@@ -23,8 +21,7 @@ const extractTerms = (name) => {
             .replace(/[\u0300-\u036f]/g, "")
             .replace(/(\w{2,})(S)/, "$1")
             .split(/\W+/)
-            .filter(term => !!term && !excludeTerms.includes(term)); 
-            // if string is empty !! return false and not include in the list
+            .filter(term => !!term && !excludeTerms.includes(term));
 }
 
 const matchTerms = ({ searchWord }, { display_name }) => {
@@ -37,7 +34,6 @@ const matchTerms = ({ searchWord }, { display_name }) => {
 
 const ProductsList = (props) => {
   const renderItem = ({ item }) => {
-    // when no input, show all items
     if (props.searchWord === "") {
       return <Item name={item.display_name} />;
     }
