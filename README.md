@@ -1,7 +1,7 @@
 # Search-bar-react-native
 ### Technical challenge for Omie.
 
-Build a React application that mimics this search feature : 
+Build a React application that mimics this search feature : <br/>
 when the user inputs keywords, it displays matching products in appropriate order.
 
 
@@ -27,7 +27,7 @@ npm i
 npx react-native run-ios
 ```
 
-## Futur Features
+## Future Features
 
 ### Todo : 
 
