@@ -7,12 +7,6 @@ import {
   SafeAreaView,
 } from "react-native";
 
-// todo
-  // - ajouter un debounce dans la searchBar ?
-  // - garder itemTerms en cache 
-
-
-// definition of the Item, which will be rendered in the FlatList
 const Item = ({ name }) => (
   <View style={styles.item}>
     <Text style={styles.title}>{name}</Text>
@@ -27,27 +21,23 @@ const extractTerms = (name) => {
             .replace(/[\u0300-\u036f]/g, "")
             .replace(/(\w{2,})(S)/, "$1")
             .split(/\W+/)
-            .filter(term => !!term && !excludeTerms.includes(term)); 
-            // si chaine vide !! return false et pas inclus dans la list
+            .filter(term => !!term && !excludeTerms.includes(term));
 }
 
-const matchTerms = ({ searchPhrase }, { display_name }) => {
+const matchTerms = ({ searchWord }, { display_name }) => {
   const itemTerms = extractTerms(display_name);
   
-  return extractTerms(searchPhrase).every((term) => {
+  return extractTerms(searchWord).every((term) => {
     return itemTerms.find(itemTerm => itemTerm.indexOf(term) === 0);
   });
 }
-// the filter
-const List = (props) => {
+
+const ProductsList = (props) => {
   const renderItem = ({ item }) => {
-    // when no input, show all items
-    if (props.searchPhrase === "") {
+    if (props.searchWord === "") {
       return <Item name={item.display_name} />;
     }
-    // if (item.display_name.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(props.searchPhrase.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
-    //   return <Item name={item.display_name} />;
-    // }
+
     const itemTerms = extractTerms(item.display_name);
     if (matchTerms(props, item)) {
       return <Item name={item.display_name} />;
@@ -71,7 +61,7 @@ const List = (props) => {
   );
 };
 
-export default List;
+export default ProductsList;
 
 const styles = StyleSheet.create({
   list__container: {

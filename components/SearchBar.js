@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, TextInput, View, Keyboard, Button, Image } from "react-native";
+import { StyleSheet, TextInput, View, Keyboard, Button } from "react-native";
 
 const SearchBar = (props) => {
   return (
@@ -14,8 +14,8 @@ const SearchBar = (props) => {
         <TextInput
           style={styles.input}
           placeholder="Recherche"
-          value={props.searchPhrase}
-          onChangeText={props.setSearchPhrase}
+          value={props.searchWord}
+          onChangeText={props.setsearchWord}
           onFocus={() => {
             props.setClicked(true);
           }}
