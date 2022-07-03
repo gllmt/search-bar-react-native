@@ -1,4 +1,3 @@
-// Home.js
 import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
@@ -7,13 +6,13 @@ import {
   ActivityIndicator,
 } from "react-native";
 
-import List from "../components/List";
+import ProductsList from "../components/ProductsList";
 import SearchBar from "../components/SearchBar";
 import DataProducts from "../assets/dataProducts.json"
 
 
 const Home = () => {
-  const [searchPhrase, setSearchPhrase] = useState("");
+  const [searchWord, setsearchWord] = useState("");
   const [clicked, setClicked] = useState(false);
   const [fakeData, setFakeData] = useState();
   const data = DataProducts;
@@ -37,16 +36,16 @@ const Home = () => {
       {!clicked && <Text style={styles.title}>Omie & Cie</Text>}
 
       <SearchBar
-        searchPhrase={searchPhrase}
-        setSearchPhrase={setSearchPhrase}
+        searchWord={searchWord}
+        setsearchWord={setsearchWord}
         clicked={clicked}
         setClicked={setClicked}
       />
       {!fakeData ? (
         <ActivityIndicator size="large" />
       ) : (
-          <List
-            searchPhrase={searchPhrase}
+          <ProductsList
+            searchWord={searchWord}
             data={fakeData}
             setClicked={setClicked}
           />
